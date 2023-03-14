@@ -84,7 +84,7 @@ fun SingUpScreen() {
             ) {
 
                 OutlinedTextField(
-                    value = "Susanna Hoffs",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -99,8 +99,10 @@ fun SingUpScreen() {
                     }
                 )
 
+                Spacer(modifier = Modifier.height(31.dp))
+
                 OutlinedTextField(
-                    value = "99999-0987",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -115,8 +117,10 @@ fun SingUpScreen() {
                     }
                 )
 
+                Spacer(modifier = Modifier.height(24.dp))
+
                 OutlinedTextField(
-                    value = "teste@email.com",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -132,8 +136,10 @@ fun SingUpScreen() {
                     }
                 )
 
+                Spacer(modifier = Modifier.height(31.dp))
+
                 OutlinedTextField(
-                    value = "***************",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -148,54 +154,69 @@ fun SingUpScreen() {
                     }
                 )
 
-                Spacer(modifier = Modifier.height(31.dp))
+                Spacer(modifier = Modifier.height(21.dp))
+
+                Row(
+                    modifier = Modifier,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = true,
+                        onCheckedChange = {},
+                        colors = CheckboxDefaults.colors(Color(207, 6, 240, 255)),
+
+                        )
+                    Text(
+                        text = stringResource(id = R.string.text_checkbox),
+                        fontSize = 14.sp
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(23.dp))
 
                 Column(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalAlignment = Alignment.End
+                        .fillMaxWidth()
                 ) {
                     Button(
                         onClick = {},
+                        Modifier
+                            .height(48.dp)
+                            .fillMaxWidth(),
                         shape = RoundedCornerShape(16.dp),
                         colors = ButtonDefaults.buttonColors(Color(207, 6, 240, 255))
                     ) {
                         Text(
-                            text = stringResource(id = R.string.button_sing_in),
+                            text = stringResource(id = R.string.text_button_create),
                             fontSize = 16.sp,
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
                         )
-
-                        Icon(
-                            painter = painterResource(id = R.drawable.arrow_icon),
-                            contentDescription = null,
-                            modifier = Modifier.size(32.dp),
-                            tint = Color.White
-                        )
                     }
 
                     Spacer(modifier = Modifier.height(31.dp))
 
-                    Row() {
+                    Row(
+                        modifier = Modifier
+                            .width(352.dp),
+                        horizontalArrangement = Arrangement.End
+                    ) {
                         Text(
-                            text = stringResource(id = R.string.text_dont_have_account),
+                            text = stringResource(id = R.string.text_already),
                             fontSize = 12.sp,
                             color = Color(160, 156, 156, 255)
                         )
 
                         Text(
-                            text = stringResource(id = R.string.text_sing_up),
+                            text = stringResource(id = R.string.text_singIn),
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold,
                             color = (Color(207, 6, 240, 255)
-                                    ))
+                                    )
+                        )
                     }
                 }
-
-
-
             }
         }
 

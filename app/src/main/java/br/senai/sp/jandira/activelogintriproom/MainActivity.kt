@@ -89,7 +89,7 @@ fun LoginScreen() {
                     .fillMaxWidth(),
             ) {
                 OutlinedTextField(
-                    value = "teste@email.com",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -108,7 +108,7 @@ fun LoginScreen() {
                 Spacer(modifier = Modifier.height(31.dp))
 
                 OutlinedTextField(
-                    value = "***************",
+                    value = "",
                     onValueChange = {},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
@@ -136,7 +136,7 @@ fun LoginScreen() {
                         colors = ButtonDefaults.buttonColors(Color(207, 6, 240, 255))
                     ) {
                         Text(
-                            text = stringResource(id = R.string.button_sing_in),
+                            text = stringResource(id = R.string.text_singIn).uppercase(),
                             fontSize = 16.sp,
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.Bold,
