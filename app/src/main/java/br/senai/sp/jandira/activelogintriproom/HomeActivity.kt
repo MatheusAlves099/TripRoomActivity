@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.activelogintriproom.model.Categories
 import br.senai.sp.jandira.activelogintriproom.ui.theme.ActiveLoginTripRoomTheme
 
 class HomeActivity : ComponentActivity() {
@@ -33,8 +34,36 @@ class HomeActivity : ComponentActivity() {
     }
 }
 
-@Preview(showSystemUi = true)
 @Composable
+fun Greeting(categories: List<Categories>) {
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier
+                .width(109.dp)
+                .height(64.dp),
+            backgroundColor = Color(207, 6, 240, 255)
+        ){
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.mountains),
+                    contentDescription = "",
+                    modifier = Modifier.size(32.dp)
+                )
+                Text(
+                    text = "Mountain",
+                    color = Color.White,
+                    fontSize = 14.sp
+                )
+            }
+        }
+    }
+}
+@Composable
+@Preview(showSystemUi = true)
 fun HomeScreen() {
 
     Surface(
@@ -119,31 +148,7 @@ fun HomeScreen() {
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    Card(
-                        modifier = Modifier
-                            .width(109.dp)
-                            .height(64.dp),
-                        backgroundColor = Color(207, 6, 240, 255)
-                    ){
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.Center
-                        ) {
-                            Image(
-                                painter = painterResource(id = R.drawable.mountains),
-                                contentDescription = "",
-                                modifier = Modifier.size(32.dp)
-                                )
-                            Text(
-                                text = "Mountain",
-                                color = Color.White,
-                                fontSize = 14.sp
-                            )
-                        }
-                    }
-                }
+
             }
         }
     }
