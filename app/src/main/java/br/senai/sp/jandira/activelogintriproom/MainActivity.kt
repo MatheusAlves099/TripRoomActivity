@@ -26,6 +26,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.activelogintriproom.components.BottomShape
+import br.senai.sp.jandira.activelogintriproom.components.TopShape
 import br.senai.sp.jandira.activelogintriproom.ui.theme.ActiveLoginTripRoomTheme
 
 class MainActivity : ComponentActivity() {
@@ -53,15 +55,7 @@ fun LoginScreen() {
             horizontalArrangement = Arrangement.End,
         ) {
 
-            Surface(
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(40.dp),
-                shape = RoundedCornerShape(bottomStart = 16.dp),
-                color = Color(207, 6, 240, 255)
-            ) {
-
-            }
+        TopShape()
         }
 
         Column(
@@ -179,15 +173,7 @@ fun LoginScreen() {
             verticalAlignment = Alignment.Bottom
         ) {
 
-            Surface(
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(40.dp),
-                shape = RoundedCornerShape(topEnd = 16.dp),
-                color = Color(207, 6, 240, 255)
-            ) {
-
-            }
+        BottomShape()
         }
     }
 }

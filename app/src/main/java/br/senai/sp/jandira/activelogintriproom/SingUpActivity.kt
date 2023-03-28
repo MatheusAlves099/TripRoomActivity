@@ -3,13 +3,20 @@ package br.senai.sp.jandira.activelogintriproom
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -19,6 +26,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.activelogintriproom.components.BottomShape
+import br.senai.sp.jandira.activelogintriproom.components.TopShape
 import br.senai.sp.jandira.activelogintriproom.ui.theme.ActiveLoginTripRoomTheme
 
 class SingUpActivity : ComponentActivity() {
@@ -45,15 +54,7 @@ fun SingUpScreen() {
             horizontalArrangement = Arrangement.End,
         ) {
 
-            Surface(
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(40.dp),
-                shape = RoundedCornerShape(bottomStart = 16.dp),
-                color = Color(207, 6, 240, 255)
-            ) {
-
-            }
+            TopShape()
         }
 
         Column(
@@ -75,7 +76,45 @@ fun SingUpScreen() {
                 color = Color(160, 156, 156, 255),
             )
 
-            Spacer(modifier = Modifier.height(50.dp))
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+            ) {
+                Card(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .align(alignment = Alignment.TopEnd),
+                    shape = CircleShape,
+                    border = BorderStroke(
+                        width = 2.dp,
+                        Brush.horizontalGradient(
+                            listOf(
+                                Color.Magenta,
+                                Color.White
+                            )
+                        )
+                    )
+                ) {
+
+                Image(painter = painterResource(id = R.drawable.user),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(16.dp)
+                )
+
+                }
+                Image(painter = painterResource(id = R.drawable.camera),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(28.dp)
+                        .offset(x = 0.dp, y = 0.dp)
+                        .align(alignment = Alignment.BottomEnd)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             Column(
                 modifier = Modifier
@@ -99,7 +138,7 @@ fun SingUpScreen() {
                     }
                 )
 
-                Spacer(modifier = Modifier.height(31.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 OutlinedTextField(
                     value = "",
@@ -117,7 +156,7 @@ fun SingUpScreen() {
                     }
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 OutlinedTextField(
                     value = "",
@@ -136,7 +175,7 @@ fun SingUpScreen() {
                     }
                 )
 
-                Spacer(modifier = Modifier.height(31.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 OutlinedTextField(
                     value = "",
@@ -154,14 +193,12 @@ fun SingUpScreen() {
                     }
                 )
 
-                Spacer(modifier = Modifier.height(21.dp))
-
                 Row(
-                    modifier = Modifier,
+                    modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
-                        checked = true,
+                        checked = false,
                         onCheckedChange = {},
                         colors = CheckboxDefaults.colors(Color(207, 6, 240, 255)),
 
@@ -172,7 +209,6 @@ fun SingUpScreen() {
                     )
                 }
 
-                Spacer(modifier = Modifier.height(23.dp))
 
                 Column(
                     modifier = Modifier
@@ -195,7 +231,7 @@ fun SingUpScreen() {
                         )
                     }
 
-                    Spacer(modifier = Modifier.height(31.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
 
                     Row(
                         modifier = Modifier
@@ -225,15 +261,7 @@ fun SingUpScreen() {
             verticalAlignment = Alignment.Bottom
         ) {
 
-            Surface(
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(40.dp),
-                shape = RoundedCornerShape(topEnd = 16.dp),
-                color = Color(207, 6, 240, 255)
-            ) {
-
-            }
+            BottomShape()
         }
     }
 }

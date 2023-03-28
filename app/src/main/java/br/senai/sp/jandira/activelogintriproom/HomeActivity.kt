@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.senai.sp.jandira.activelogintriproom.dao.repository.CategoriesRepository
 import br.senai.sp.jandira.activelogintriproom.model.Categories
 import br.senai.sp.jandira.activelogintriproom.ui.theme.ActiveLoginTripRoomTheme
 
@@ -30,6 +31,7 @@ class HomeActivity : ComponentActivity() {
             ActiveLoginTripRoomTheme {
                 HomeScreen()
             }
+            Greeting(CategoriesRepository.CategoriesList())
         }
     }
 }
@@ -147,7 +149,6 @@ fun HomeScreen() {
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
-
 
             }
         }
