@@ -17,4 +17,6 @@
     <string name="text_singIn">Sing in</string>
     <string name="title_activity_sing_up">SingUpActivity</string>
     <string name="title_activity_home">HomeActivity</string>
+
+    <string name="categories">Categories</string>
 </resources>

@@ -1,11 +1,15 @@
 package br.senai.sp.jandira.activelogintriproom
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
@@ -21,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -36,6 +41,8 @@ import br.senai.sp.jandira.activelogintriproom.components.TopShape
 import br.senai.sp.jandira.activelogintriproom.model.User
 import br.senai.sp.jandira.activelogintriproom.repository.UserRepository
 import br.senai.sp.jandira.activelogintriproom.ui.theme.ActiveLoginTripRoomTheme
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 
 class SingUpActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +78,23 @@ fun SingUpScreen() {
     var over18State by remember {
         mutableStateOf(value = false)
     }
+
+    // Obter foto da galeria de imagens
+    var photoUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+
+    // Criar o objeto que abrirá a galeria e retornará
+    // a Uri da imagem selecionada
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ){
+        photoUri = it
+    }
+
+    var painter = rememberAsyncImagePainter(
+        ImageRequest.Builder(LocalContext.current).data(photoUri).build()
+    )
 
     var context = LocalContext.current
 
@@ -130,10 +154,11 @@ fun SingUpScreen() {
                 ) {
 
                     Image(
-                        painter = painterResource(id = R.drawable.user),
+                        painter = painter,
                         contentDescription = null,
                         modifier = Modifier
-                            .size(16.dp)
+                            .size(16.dp),
+                        contentScale = ContentScale.Crop
                     )
 
                 }
@@ -141,9 +166,15 @@ fun SingUpScreen() {
                     painter = painterResource(id = R.drawable.camera),
                     contentDescription = null,
                     modifier = Modifier
-                        .size(28.dp)
-                        .offset(x = 0.dp, y = 0.dp)
+                        .size(26.dp)
+                        .offset(
+                            x = 0.dp,
+                            y = 0.dp
+                        )
                         .align(alignment = Alignment.BottomEnd)
+                        .clickable { 
+                            launcher.launch("image/*")
+                        }
                 )
             }
 
@@ -280,7 +311,8 @@ fun SingUpScreen() {
                     Row(
                         modifier = Modifier
                             .width(352.dp),
-                        horizontalArrangement = Arrangement.End
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
                             text = stringResource(id = R.string.text_already),
@@ -288,13 +320,20 @@ fun SingUpScreen() {
                             color = Color(160, 156, 156, 255)
                         )
 
-                        Text(
-                            text = stringResource(id = R.string.text_singIn),
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = (Color(207, 6, 240, 255)
-                                    )
-                        )
+                        TextButton(
+                            onClick = {
+                                var openSingin = Intent(context, MainActivity::class.java)
+                                context.startActivity(openSingin)
+                            }
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.text_singIn),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = (Color(207, 6, 240, 255)
+                                        )
+                            )
+                        }
                     }
                 }
             }

@@ -2,10 +2,10 @@ package br.senai.sp.jandira.activelogintriproom.model
 
 import androidx.compose.ui.graphics.painter.Painter
 
-data class Categories(
-    var id: Int = 0,
-    var image: Painter? = null,
-    var name: String = ""
+data class Category(
+    var id: Long = 0,
+    var name: String = "",
+    var icon: Painter? = null
 ) {
 
 }
